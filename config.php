@@ -1,5 +1,6 @@
 <?php
 
-# db user und pwd
+$user_name = 'Test';
+$user_clear_password = 'geheim';
 
 ?>
