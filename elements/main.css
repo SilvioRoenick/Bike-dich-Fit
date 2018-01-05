@@ -1,0 +1,6 @@
+* { margin:0; padding:0; }
+html, body { height: 100%; }
+.site-wrapper { position:relative; min-height: 100%; margin: 0px auto;}
+header { text-align: center; top: 0px; left: 0px; width: 100%; width: 100vw;  height: 80px; margin: 0px auto; background-color: red; }
+.site-content { text-align:center; top:0px; left:0px; margin:0px auto; width:100%; width:100vw; padding-bottom:50px; overflow: hidden;}
+footer { text-align:center; width:100%; width:100vw; position:absolute; right:0; bottom:0; left:0; height:50px; margin:0px auto; background-color: blue;}

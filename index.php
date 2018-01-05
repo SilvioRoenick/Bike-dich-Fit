@@ -1,20 +1,35 @@
 <?php
-
 error_reporting(E_ALL ^ E_NOTICE); 
-
 session_start(); 
 
 include ("config.php");
 
-if ( $_POST['user'] != "" AND $_POST['password'] != ""  )
-{
-	if (($user_name)==($_POST['user']) AND ($user_clear_password)==($_POST['password']))
-	{
-		$_SESSION['user'] = $_POST['user'];
-		$_SESSION['login'] = true;
+// Datenbankverbindung herstellen
+try { 
+	$pdo = new PDO("mysql:host=$db_hostname;dbname=$db_dbname", "$db_username", "$db_password");
 	}
+catch(PDOException $e)
+	{
+	echo $e->getMessage();
+	}
+
+if (isset($_GET['reqs'])) {$reqSite = $_GET['reqs'];}
+if (isset($_GET['reqa'])) {$reqAction = $_GET['reqa'];}
+
+if ( $_SESSION['login'] != true AND $_POST['login_email'] != "" AND $_POST['login_passwort'] != ""  )
+{
+	$sql = "SELECT * FROM benutzer";
+	foreach ($pdo->query($sql) as $row) {
+		if (($row['email'])==($_POST['login_email']) AND ($row['Passwort'])==($_POST['login_passwort']))
+		{
+			$_SESSION['email'] = $_POST['login_email'];
+			$_SESSION['login'] = true;
+		}
+		else{ echo 'Login Fehler';}		
+	}	
 }
 
+	
 echo '<!DOCTYPE html>';
 echo '<html>';
 
@@ -22,23 +37,32 @@ include ("include/html-header.php");
 
 echo '<body>';
 
-echo 'Hallo Welt!';
+echo '<div class="site-wrapper">';
 
-//echo $_POST;
-//echo $user_name;
-//echo $user_clear_password;
+include ("include/header.php");
+
+echo '<div class="site-content">';
+
+//echo 'Hallo Welt!';
+
+//echo $_POST['login_benutzer'];
+//echo $_POST['login_passwort'];
+//echo $login_benutzer;
+//echo $login_passwort;
 //echo $_SESSION['login'];
-//echo $_SESSION['user'];
+///echo $_SESSION['benutzer'];
 
 if ( $_SESSION['login'] == true )
 	{
-		if ($reqSite == "---")
+		if ($reqSite == "logout")
 		{
-			include ("---"); 
+			session_destroy();
+			session_start();
+			include ("include/login.php"); 
 		}
 		else
 		{
-			include ("include/user-site.php"); 
+			include ("include/content.php"); 
 		}
 	}
 	else
@@ -46,6 +70,10 @@ if ( $_SESSION['login'] == true )
 		include ("include/login.php"); 
 	}
 	
+echo '</div>'; // site-content
+include ("include/footer.php");
+
+echo '</div>'; // site-container
 echo '</body>';
 echo '</html> ';
 

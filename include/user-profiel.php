@@ -10,7 +10,7 @@ echo '<br>';
 echo '<input type="password" name="login_passwort" value="">';
 echo '<br>';
 echo '<br>';
-echo '<input type="Submit" value="Login">';
+echo '<input type="Submit" value="Speichern">';
 echo '<br>';
 echo '</form>';
 	
