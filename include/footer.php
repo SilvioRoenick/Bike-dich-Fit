@@ -1,9 +1,7 @@
 <?php
 
-echo '<footer>';	
-	
-echo 'foot';
-	
+echo '<footer>';
+echo '';
 echo '</footer>';
-	
+
 ?>

@@ -7,5 +7,5 @@ echo '<title></title>';
 //echo '';
 echo '<script type="text/javascript" src="elements/main.js"></script>';
 echo '</head>';
-	
+
 ?>

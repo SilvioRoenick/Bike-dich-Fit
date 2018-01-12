@@ -1,21 +1,18 @@
 <?php
 
-if($loginError == true)
-{
-	echo '<h1>'.$lang['loginError'].'</h1>';
-}
+echo 'event edit';
 
 echo '<form action="?reqs=content" method="POST">';
-echo 'email:';
+echo 'Event Name:';
 echo '<br>';
 echo '<input type="text" name="login_email" value="">';
 echo '<br>';
-echo 'Kennwort:';
+echo 'beschreibung:';
 echo '<br>';
-echo '<input type="password" name="login_passwort" value="">';
+echo '<input type="text" name="login_passwort" value="">';
 echo '<br>';
 echo '<br>';
-echo '<input type="Submit" value="Login">';
+echo '<input type="Submit" value="Speichern">';
 echo '<br>';
 echo '</form>';
 
